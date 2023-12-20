@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="js/lib/jquery.js"></script>
+        <script>
+    $(window).load(function () {
+      $(".loader").fadeOut("slow");
+    });
+        </script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <title>Educational RC</title>
+        <!-- global CSS Starts -->
+        <link rel="stylesheet" href="css/lib/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="css/main.css" type="text/css">
+        <link rel="stylesheet" href="css/template/p75_ex12.css" type="text/css">
+        <link rel="stylesheet" href="css/template/p106_Act2_L.css" type="text/css">
+        <!-- global CSS End -->
+        <!-- global JS Starts -->
+        <script src="js/lib/jquery_v3.3.1.js"></script>
+        <script src="js/lib/bootstrap.min.js"></script>
+        <script src="js/lib/underscore-min.js"></script>
+        <!-- global JS End -->
+        <style>
+    .loader {
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      background: url("js/lib/preloader.gif") 50% 50% no-repeat rgb(255, 255, 255);
+    }
+        </style>
+    </head>
+    <body>
+        <div class="loader"></div>
+        <div id="container">
+            <div class="page_content">
+                <div class="container-fluid noPadding">
+                    <!-- header start -->
+                    <div class="col-xs-12 noPadding header">
+                        <div
+                            class="box1 title hide"
+                            data-audioSrc=""
+                            onClick="fnTitleAudioClick(this)"
+                            style="cursor: pointer"
+                        >
+                            <img src="assets/images" class="img-responsive">
+                        </div>
+                        <h1 class="headerTitle">
+                            <span class="titleNo">2</span>
+                            <span>Read and order.</span>
+                        </h1>
+                        <div class="box1">
+                            <div class="resourseBtn queBox queBox_1" id="imgBox_1">
+                                <div class="clickableBox">
+                                    <img
+                                        src="./assets/images/resourse_icon.png"
+                                        style="width:100px;"
+                                        class="img-responsive"
+                                        class="btn btn-secondary"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="Resource"
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box1 pull-right helpBtn hide">
+                            <img src="assets/images/help_icon.png" class="img-responsive">
+                        </div>
+                        <!-- <div class="box1">
+            <div class="resourseBtn queBox queBox_1 " id="imgBox_1">
+              <div class="clickableBox">
+                <img src="" style="width: 100px" class="img-responsive" class="btn btn-secondary" data-toggle="tooltip"
+                  data-placement="top" title="Resource" />
+              </div>
+            </div>
+          </div>
+
+          <div class="box1 pull-right helpBtn hide">
+            <img src="" class="img-responsive" />
+          </div> -->
+                    </div>
+                    <audio id="audioPlayer1" preload="auto" src=""></audio>
+                    <audio id="audioPlayer2" preload="auto" src=""></audio>
+                    <!-- header end -->
+                    <!-- page start -->
+                    <section class="col-xs-12 pageContainer">
+                        <div class="pageBg col-xs-12"></div>
+                        <div class="pageContent col-xs-12">
+                            <div
+                                id="myCarousel"
+                                class="carousel slide col-xs-12 template4_v1"
+                                data-ride="carousel"
+                                data-interval="0"
+                                data-wrap="false"
+                                data-id="template4_v1"
+                            >
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+                                    <div class="item active" data-audioSrc="">
+                                        <div class="itemContainer">
+                                            <ul id="items-list" class="moveable" style="padding: 0;">
+                                                <li id="1" order="4"><span style="font-family: AronuiB;font-size:42px;">a&nbsp;&nbsp;</span>Mummy walked around the garden.</li>
+                                                <li id="2" order="5"><span style="font-family: AronuiB;font-size:42px;">b&nbsp;&nbsp;</span>The children ate the tomatoes.</li>
+                                                <li id="3" order="3"><span style="font-family: AronuiB;font-size:42px;">c&nbsp;&nbsp;</span>Cassie saw yellow flowers.</li>
+                                                <li id="3" order="1"><span style="font-family: AronuiB;font-size:42px;">d&nbsp;&nbsp;</span>The children planted some seeds.</li>
+                                                <li id="3" order="2"><span style="font-family: AronuiB;font-size:42px;">e&nbsp;&nbsp;</span>Each week, the plants grew.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="correctAnsAudio" data-audioSrc="assets/audio/correct.mp3"></div>
+                                <div class="incorrectAnsAudio" data-audioSrc="assets/audio/incorrect.mp3"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- page end -->
+                    <!-- footer start -->
+                    <div class="row">
+                        <div class="col-xs-12 footer">
+                            <div class="box1">
+                                <div class="backBtn disabled hide">
+                                    <img src="assets/images/back_icon.png" class="img-responsive">
+                                </div>
+                            </div>
+                            <div class="box1" style="margin: 1% -6%;">
+                                <div class="reloadBtnAll" onclick="reloadBtnAll()">
+                                    <img src="assets/images/replay_icon.png" class="img-responsive">
+                                </div>
+                            </div>
+                            <div class="box1">
+                                <div class="reloadBtnScreen hide">
+                                    <img src="assets/images/replay_icon.png" class="img-responsive">
+                                </div>
+                            </div>
+                            <div class="box3 hide">
+                                <div class="audioPlayerContainer" id="audioDragContainer">
+                                    <div class="col-xs-12 controlsDiv">
+                                        <div class="controlsinline">
+                                            <div id="pButton" class="col-xs-1 noPadding">
+                                                <img src="" class="img-responsive playImg" onclick="fnStartAudio('play');">
+                                                <img
+                                                    src=""
+                                                    class="img-responsive pauseImg"
+                                                    onclick="fnStartAudio('pause');"
+                                                    style="display: none;"
+                                                >
+                                            </div>
+                                            <div class="col-xs-11" id="audioDrag">
+                                                <div class="slidecontainer">
+                                                    <input
+                                                        type="range"
+                                                        min="0"
+                                                        max="100"
+                                                        value="0"
+                                                        class="slider"
+                                                        id="myRange"
+                                                        step="0.1"
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box1" style="position: relative; left: 510px">
+                                <div
+                                    class="showOne"
+                                    id="showOne"
+                                    onclick="showVal()"
+                                    style="cursor: pointer"
+                                    data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="Show selected"
+                                >
+                                    <img src="./assets/images/show.png" class="img-responsive">
+                                </div>
+                            </div>
+                            <div class="box2">
+                                <div class="showAnsBtn" onclick="showAns()">
+                                    <img src="assets/images/showAns_icon.png" class="img-responsive">
+                                </div>
+                            </div>
+                            <div class="box1">
+                                <div class="nextBtn hide">
+                                    <img src="assets/images/next_icon.png" class="img-responsive inlineblock">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- footer end -->
+                    <div class="resoursePopup pagePopup popup_1" style="display: none;">
+                        <div class="resourseContainer">
+              
+                          <div class="pagePopupContainer">
+                            <img class="closeBtn" src="assets/images/close_icon.png" style="width:65px;" class="btn btn-secondary"
+                              data-toggle="tooltip" data-placement="top" title="Close">
+                            <div class="col-xs-12 noPadding">
+                              <div class="popup-content">
+                                <div id="popupSlider_1" style="height: 100%;" class="carousel slide popupSlider" data-ride="carousel"
+                                  data-interval="false">
+                                  <!-- Wrapper for slides -->
+                                  <div class="carousel-inner">
+                                    <div class="item item_1 active">
+                                      <div class="content">
+                                        <div class="clickableBox">
+                                          <video
+                                            id="myVideo"
+                                            class="center-block"
+                                            style="
+                                              width: 98%;
+                                              position: relative;
+                                              top: 16px;
+                                            "
+                                            controls
+                                          >
+                                            <source
+                                              src="assets/video/u5.mp4"
+                                              type="video/mp4"
+                                            />
+                                          </video>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <!-- <div class="item item_1">
+                                      <div class="content">
+                                        <div class="clickableBox">
+                                          <img class="center-block" src="assets/images/Table-1.jpg" style="width: 84%;
+                                                    position: relative;
+                                                    top: 200px;">
+                                        </div>
+                                      </div>
+                                    </div>
+              
+                                    <div class="item item_2">
+                                      <div class="content">
+                                        <div class="clickableBox">
+                                          <img class="center-block" src="assets/images/Table-2.jpg" style="    width: 85%;
+                                                    margin-top: 167px;" />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div> -->
+                                  <!-- Left and right controls -->
+                                  <!-- <a class="carouselLeft" href="#popupSlider_1" data-slide="prev" class="btn btn-secondary"
+                                    data-toggle="tooltip" data-placement="top" title="Previous"><img class=""
+                                      src="assets/images/popupBack.png" style="width:100px;" /></a>
+                                  <a class="carouselRight" href="#popupSlider_1" data-slide="next" class="btn btn-secondary"
+                                    data-toggle="tooltip" data-placement="top" title="Next"><img class=""
+                                      src="assets/images/popupNext.png" style="width:100px;" /></a> -->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+              
+              
+                        </div>
+              
+                        <div class="helpPopup" style="display: none;">
+                          <div class="helpContainer">
+                            <img class="closeBtn" src="assets/images/close_icon.png">
+                            <div class="col-xs-12" style="overflow: auto;width:100%;height:100%;font-size:30px;">
+                              <p>Help content goes here.</p>
+                            </div>
+                          </div>
+                        </div>
+              
+              
+                      </div>
+              
+                      <div class="helpPopup" style="display: none;">
+                        <div class="helpContainer">
+                          <img class="closeBtn" src="assets/images/close_icon.png">
+                          <div class="col-xs-12" style="overflow:
+                                      auto;width:100%;height:100%;font-size:30px;">
+                            <p>Help content goes here.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+              $('.resoursePopup .closeBtn').on('click', function () {
+    // console.log(">> isMusicPlaying "+isMusic1Playing+" isMusic1Playing "+isMusic2Playing+ " lastAudio "+lastAudio);
+    if (lastAudio == 1 && !isMusic1Playing) {
+      $audio1[0].play()
+    }
+    if (lastAudio == 2) {
+      $audio2[0].play()
+    }
+    $('.resoursePopup').hide()
+  })
+    $(function () {
+      fnSetPlayer();
+      fnTemplate4_v1($("div.active"));
+    });
+        </script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/template/p106_Act2_L.js"></script>
+        <script type="text/javascript" src="js/template/p75_ex12.js"></script>
+    </body>
+</html>
